@@ -7,6 +7,43 @@
   </head>
   <body>
     <h1>ToDoリスト</h1>
+    <label><input type="radio" name="assignment" checked>すべて</label>
+    <label><input type="radio" name="assignment">作業中</label>
+    <label><input type="radio" name="assignment">完了</label>
+    <div class="container" id="output">
+      <ul id="add_id">ID</ul>
+      <ul id="add_comment">コメント</ul>
+      <div id="add_status">状態</div>
+    </div>
+      <!-- <div class="id" id="id">
+        <p>ID</p>
+        <p>0</p>
+      </div>
+      <div class="comment" id="comment">
+        <p>コメント</p>
+        <p>aaa</p>
+      </div>
+      <div class="status" id="status">
+        <p>状態</p>
+        <div class="container">
+          <div class="status_btn">
+            <a class="status_b btn" id="status_b">作業中</a>
+          </div>
+          <div class="delete_btn">
+            <a class="delete btn" id="delete">削除</a>
+          </div>
+        </div>
+      </div> -->
+
+    <h2>新規タスク追加</h2>
+    <div class="add_container">
+      <input id="text_add" value="" type="text">
+      <div class="add_btn">
+        <a class="add btn" id="add_btn">追加</a>
+      </div>
+    </div>
+    
+
     <script src="js/main.js"></script>
   </body>
 </html>
