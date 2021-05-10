@@ -13,17 +13,23 @@
   function addTask() {
     const content = textAdd.value;
     task.content = content
-    todos.push(task)
+    todos.push({
+      content: content,
+      status: '作業中'
+    })
     textAdd.value = ''
   }
-  function displyTask(todos) {
-    const tr =  document.createElement('tr');
-    const idTd = document.createElement('td');
-    const td = document.createElement('td');
-    todos.forEach(task => {
+
+  function displayTask(todos) {
+    add.innerHTML = '';
+    todos.forEach((task, index) => {
       //IDを添付する処理
+      const tr =  document.createElement('tr');
+      const idTd = document.createElement('td');
+      const td = document.createElement('td');
       for (let i = 0; i < todos.length; i++) {
-        idTd.textContent = `${i}`;
+        document.getElementsByTagName(tr);
+        idTd.textContent = index;
       }
       //タスクの内容を添付する処理
       td.textContent = task.content
@@ -34,24 +40,36 @@
       //タスクボタンに状態を添付する処理
       createStatus(task, tr)
       //削除ボタンに削除と添付する処理
-      createDelete(tr)
+      createDelete(tr,  index)
       add.appendChild(tr);
     })
   }
+
   function createStatus(task, tr) {
     const statusBtn = document.createElement('button');
     statusBtn.classList.add('btn');
     statusBtn.textContent = task.status;
     tr.appendChild(statusBtn);
   }
-  function createDelete(tr) {
+
+  function createDelete(tr, index) {
     const deleteBtn = document.createElement('button');
     deleteBtn.classList.add('btn');
     deleteBtn.textContent = '削除';
     tr.appendChild(deleteBtn);
+    deleteTask(deleteBtn, tr, index);
   }
+
+  function deleteTask(deleteBtn, tr, index) {
+    deleteBtn.addEventListener('click', () =>{
+      add.removeChild(tr);
+      todos.splice(index, 1);
+      displayTask(todos);
+    });
+  }
+
   addBtn.addEventListener('click', () =>{
     addTask();
-    displyTask(todos);
+    displayTask(todos);
   });
 };
