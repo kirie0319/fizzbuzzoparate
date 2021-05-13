@@ -14,7 +14,7 @@
     const content = textAdd.value;
     task.content = content
     todos.push({
-      content: content,
+      content,
       status: '作業中'
     })
     textAdd.value = ''
@@ -40,7 +40,7 @@
       //タスクボタンに状態を添付する処理
       createStatus(task, tr)
       //削除ボタンに削除と添付する処理
-      createDelete(tr,  index)
+      createDelete(tr, index)
       add.appendChild(tr);
     })
   }
@@ -50,6 +50,21 @@
     statusBtn.classList.add('btn');
     statusBtn.textContent = task.status;
     tr.appendChild(statusBtn);
+    chageStatus(statusBtn);
+  }
+
+  const chageStatus = function (statusBtn) {
+    statusBtn.addEventListener('click', () => {
+      if (task.status === '作業中') {
+        console.log(task.status);
+        task.status = '完了';
+        statusBtn.textContent = task.status;
+      } else {
+        console.log(task.status);
+        task.status = '作業中'
+        statusBtn.textContent = task.status;
+      }
+    });
   }
 
   function createDelete(tr, index) {
