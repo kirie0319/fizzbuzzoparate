@@ -30,3 +30,11 @@ ul {
 li {
   list-style: none;
 }
+
+.unviewed {
+  display: none;
+}
+
+.ontime {
+  margin: auto;
+}
