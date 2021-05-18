@@ -62,7 +62,7 @@
     changeStatus(statusBtn, todo, tr);
   }
 
-  const changeStatus = function (statusBtn, todo, tr) {
+  function changeStatus(statusBtn, todo, tr) {
     statusBtn.addEventListener('click', () => {
       if (todo.status === '作業中') {
         todo.status = '完了';
@@ -97,44 +97,14 @@
       add.removeChild(tr);
       todos.splice(index, 1);
       displayTask(todos);
-      if (workon.checked) {
-        const completes = document.querySelectorAll('.complete');
-        completes.forEach((complete) => {
-          if (todos.status !== '作業中') {
-            complete.classList.add('unviewed');
-          }
-        });
-      }
-      if (done.checked) {
-        const focuses = document.querySelectorAll('.focus');
-        focuses.forEach((focus) => {
-          if (todos.status !== '完了') {
-            focus.classList.add('unviewed');
-          }
-        });
-      }
+      checked(todos);
     });
   }
 
   addBtn.addEventListener('click', () =>{
     addTask();
     displayTask(todos);
-    if (workon.checked) {
-      const completes = document.querySelectorAll('.complete');
-      completes.forEach((complete) => {
-        if (todos.status !== '作業中') {
-          complete.classList.add('unviewed');
-        }
-      });
-    }
-    if (done.checked) {
-      const focuses = document.querySelectorAll('.focus');
-      focuses.forEach((focus) => {
-        if (todos.status !== '完了') {
-          focus.classList.add('unviewed');
-        }
-      });
-    }
+    checked(todos);
   });
 
   overall.addEventListener('click', () => {
@@ -182,3 +152,22 @@
     });
   });
 };
+
+function checked(todos) {
+  if (workon.checked) {
+    const completes = document.querySelectorAll('.complete');
+    completes.forEach((complete) => {
+      if (todos.status !== '作業中') {
+        complete.classList.add('unviewed');
+      }
+    });
+  }
+  if (done.checked) {
+    const focuses = document.querySelectorAll('.focus');
+    focuses.forEach((focus) => {
+      if (todos.status !== '完了') {
+        focus.classList.add('unviewed');
+      }
+    });
+  }
+}
