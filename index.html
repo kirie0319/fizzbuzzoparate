@@ -6,6 +6,30 @@
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
+    <h1>ToDoリスト</h1>
+    <label><input id="all" type="radio" name="assignment" checked>すべて</label>
+    <label><input id="workon" type="radio" name="assignment">作業中</label>
+    <label><input id="done" type="radio" name="assignment">完了</label>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>コメント</th>
+          <th>状態d</th>
+        </tr>
+      </thead>
+      <tbody id="add">
+        
+      </tbody>
+    </table>
+    <h2>新規タスク追加</h2>
+    <div class="add_container">
+      <input id="text_add" value="" type="text">
+      <div class="add_btn">
+        <button class="add btn" id="add_btn">追加</button>
+      </div>
+    </div>
+    
 
     <script src="js/main.js"></script>
   </body>
